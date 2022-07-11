@@ -1,0 +1,202 @@
+@model IEnumerable<StudentRecords.Web.Models.ViewModels.StudentViewModel>
+
+<h1>Student Records</h1>
+
+<form class="mt-5">
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterStudentID">
+            Student ID
+        </label>
+
+        <input type="text" id="filterStudentID" inputmode="numeric" pattern="[0-9]*" class="form-control" placeholder="Student ID">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterNetworkID">
+            Network ID
+        </label>
+
+        <input type="text" id="filterNetworkID" class="form-control" placeholder="Network ID">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterFirstName">
+            First Name
+        </label>
+
+        <input type="text" id="filterFirstName" class="form-control" placeholder="First Name">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterLastName">
+            Last Name
+        </label>
+
+        <input type="text" id="filterLastName" class="form-control" placeholder="Last Name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterKnownAs">
+            Known As
+        </label>
+
+        <input type="text" id="filterKnownAs" class="form-control" placeholder="Known As">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterDisplayName">
+            Display Name
+        </label>
+
+        <input type="text" id="filterDisplayName" class="form-control" placeholder="Display Name">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterDateOfBirth">
+            Date of Birth
+        </label>
+
+        <input type="date" id="filterDateOfBirth" class="form-control">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterGender">
+            Gender
+        </label>
+
+        <input type="text" id="filterGender" class="form-control" placeholder="Gender">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterUniversityEmail">
+            University Email
+        </label>
+
+        <input type="email" id="filterUniversityEmail" class="form-control" placeholder="University Email">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="form-check">
+        <input type="checkbox" id="filterOverseas" class="form-check-input">
+
+        <label for="filterOverseas" class="form-check-label">
+            Overseas
+        </label>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterCourseCode">
+            Course Code
+        </label>
+
+        <input type="text" id="filterCourseCode" class="form-control" placeholder="Course Code">
+      </div>
+
+      <div class="form-group col-md-6 col-lg-4">
+        <label for="filterCourseName">
+            Course Name
+        </label>
+
+        <input type="text" id="filterCourseName" class="form-control" placeholder="Course Name">
+      </div>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" asp-action="SearchStudents" class="btn btn-primary">
+        Find Student Record
+      </button>
+      <button type="button" asp-action="Add" class="btn btn-primary">
+        Add Student Record
+      </button>
+    </div>
+</form>
+
+<h2>Search Results</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NetworkID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KnownAs)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DisplayName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UniversityEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsOverseas)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.StudentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.NetworkID)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.KnownAs)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.DisplayName)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.UniversityEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(studentRecord => student.IsOverseas)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@student.StudentID">
+                        Edit
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

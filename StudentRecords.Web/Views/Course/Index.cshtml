@@ -1,0 +1,29 @@
+@model IEnumerable<StudentRecords.Web.Models.ViewModels.CourseViewModel>
+
+<h1>Browse Courses</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(course => course.CourseCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(course => course.CourseName)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
